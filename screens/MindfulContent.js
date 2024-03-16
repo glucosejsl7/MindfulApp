@@ -3,8 +3,6 @@ import { ScrollView, View } from "react-native";
 import Content from "../components/Content";
 import NavigationTop from "../components/NavigationTop";
 import Comment from "../components/Comment";
-import CommentWrapper from "../components/CommentWrapper";
-
 
 export default function MindfulContent() {
     return (
