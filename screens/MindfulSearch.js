@@ -1,7 +1,6 @@
 import React from "react";
 import { ScrollView, View } from "react-native";
 import Search from "../components/Search";
-import NavigationBar from "../components/NavigationBar";
 import NavigationTop from "../components/NavigationTop";
 
 
@@ -15,7 +14,7 @@ export default function MindfulSearch() {
                 <Search/>
             </View>
         </ScrollView>
-        <NavigationBar />
+
         </>
         
             

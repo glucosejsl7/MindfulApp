@@ -1,7 +1,6 @@
 import React from "react";
 import { ScrollView, View } from "react-native";
 import MindfulLayout from "../components/MindfulLayout";
-import NavigationBar from "../components/NavigationBar";
 
 export default function Mindful() {
     return (
@@ -11,7 +10,6 @@ export default function Mindful() {
                 <MindfulLayout />
             </View>
         </ScrollView>
-        <NavigationBar />
         </>
         
             
