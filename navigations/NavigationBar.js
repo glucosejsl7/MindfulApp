@@ -1,12 +1,12 @@
 import React from "react";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Octicons, FontAwesome6, Entypo } from "@expo/vector-icons";
-import Mindful from "../screens/Mindful";
 import MindfulSearch from "../screens/MindfulSearch";
 import MindfulProfileAccount from "../screens/MindfulProfileAccount";
 import MindfulPlus from "../screens/MindfulPlus";
 import MindfulNotice from "../screens/MindfulNotice";
 import { View } from "react-native";
+import HomeMaterialTopTab from "./HomeMaterialTopTab";
 
 const Tab = createBottomTabNavigator();
 
@@ -21,7 +21,7 @@ export default function NavigationBar() {
             }}>
             <Tab.Screen 
                 name="Home"
-                component={Mindful}
+                component={HomeMaterialTopTab}
                 options={{
                     tabBarIcon: ({ color, size }) => ( <Octicons name="home" color={color} size={size} /> ),
                     headerShown : false,

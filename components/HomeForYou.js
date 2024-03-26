@@ -3,7 +3,7 @@ import { Feather, MaterialCommunityIcons, Ionicons, MaterialIcons, FontAwesome6,
 import React, { useEffect, useState } from "react";
 import { FlatList } from 'react-native'
 
-export default function MindfulLayout(props) {
+export default function HomeForYou(props) {
 
     const category = [ 
         { "num": "1","iconFamily":"Feather", "iconName": "grid" ,"Name" : "ทั้งหมด" },
@@ -79,19 +79,7 @@ export default function MindfulLayout(props) {
     }
 
     return (
-        <View style={{alignContent : 'flex-start', marginTop : 40}}>
-             <View style={{flexDirection : 'row', justifyContent : 'space-between' ,marginBottom : 10,borderBottomWidth :0.5,borderColor: '#e0e0e0',paddingBottom : 0}}>
-                <Image style={{ width : 90 , height : 35,marginLeft : 20, }} source={require("../Picture/logo2.png")} />
-                <View style={{ flexDirection : 'row', marginTop : 2}}>
-                    <TouchableOpacity onPress={() => handleTabPress("ติดตาม")}>
-                        <Text style={{ color : 'black' , fontSize : 18, borderBottomWidth : activeTab === "ติดตาม" ? 2 : 0, paddingBottom : 12 }}>ติดตาม</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => handleTabPress("สำหรับคุณ")}>
-                        <Text style={{ color : 'black', marginLeft : 10 , fontSize : 18, borderBottomWidth : activeTab === "สำหรับคุณ" ? 2 : 0 ,paddingBottom : 12}}>สำหรับคุณ</Text>
-                    </TouchableOpacity>
-                </View>
-                <FontAwesome6 name="magnifying-glass" size={24} color="black" style={{marginTop : 5, marginRight : 15}} />
-            </View>
+        <View style={{alignContent : 'flex-start', marginTop : 10}}>
             <View style={{ flexDirection : 'row', justifyContent : 'space-between', alignContent : 'flex-start'}}>
             <FlatList
                 horizontal={true}

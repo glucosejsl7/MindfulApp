@@ -1,13 +1,13 @@
 import React from "react";
 import { ScrollView, View } from "react-native";
-import MindfulLayout from "../components/MindfulLayout";
+import HomeFollow from "../components/HomeFollow";
 
 export default function Mindful() {
     return (
         <>
         <ScrollView>
             <View style={{ flex: 1, backgroundColor: '#FAFAFA', justifyContent: "space-evenly"}}>
-                <MindfulLayout />
+                <HomeFollow />
             </View>
         </ScrollView>
         </>
