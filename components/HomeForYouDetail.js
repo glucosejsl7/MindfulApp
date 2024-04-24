@@ -4,7 +4,7 @@ import { Ionicons, FontAwesome6 } from "@expo/vector-icons";
 import { SliderBox } from "react-native-image-slider-box";
 import { Button } from 'react-native-paper';
 
-export default function Content(props) {
+export default function HomeForYouDetail(props) {
     const [onlineContent, setOnlineContent] = useState(null);
     const [buttonText, setButtonText] = useState("ติดตาม");
     const [buttonClicked, setButtonClicked] = useState(false);
@@ -88,8 +88,8 @@ export default function Content(props) {
                 </View>
             
 
-
-            <View style={{ flexDirection : 'row', borderWidth : 0.5, borderColor : '#e0e0e0' , borderRadius : 5, paddingHorizontal : 10 ,paddingVertical :5, marginLeft : 20 , width : 170 }}>
+l
+            <View stye={{ flexDirection : 'row', borderWidth : 0.5, borderColor : '#e0e0e0' , borderRadius : 5, paddingHorizontal : 10 ,paddingVertical :5, marginLeft : 20 , width : 170 }}>
                 <FontAwesome6 name="magnifying-glass" size={12} color="black" style={{ marginTop : 4}} />
                 <Text style={{marginLeft : 5}}>Search : </Text>
                 <TouchableOpacity onPress={SearchClick}>

@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import { FontAwesome6, Ionicons, } from "@expo/vector-icons";
+import BookStorage from "../storages/BookStorage";
 
 export default function Comment(){
-
+    const [key, setKey] = useState("_" + Math.random().toString(36).substring(2, 9));
+    const [comment, setComment] = useState("");
     const [keepClicked, setKeepClicked] = useState(false);
-  const [countKeep, setCountkeep] = useState(0);
+    const [countKeep, setCountkeep] = useState(0);
 
   const handleKeepClick = () => {
     if (keepClicked) {
@@ -68,6 +70,9 @@ export default function Comment(){
       setShareClicked(!shareClicked);
       setCountshare(shareClicked ? 0 : 1);
     };
+
+
+    
 
 
 

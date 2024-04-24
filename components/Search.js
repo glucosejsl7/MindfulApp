@@ -96,7 +96,6 @@ function Search(props) {
             </View>
 
             <FlatList
-                    horizontal ={false}
                     data={onlineHashtag}
                     renderItem={({ item }) => (
                         <View>

@@ -5,6 +5,13 @@ import HomeMaterialTopTab from "./HomeMaterialTopTab";
 import Search from "../components/Search";
 import HomeFollow from "../components/HomeFollow";
 import HomeForYou from "../components/HomeForYou";
+import Book from "../components/Book";
+import BookDetail from "../components/BookDetail";
+import BookForm from "../components/BookForm";
+import AddItem from "../components/AddItem";
+import MindfulContent from "../screens/MindfulContent";
+import HomeFollowDetail from "../components/HomeFollowDetail";
+import Test from "../components/Test";
 
 
 
@@ -18,6 +25,13 @@ export default function RootStack() {
       <Stack.Screen name="Search" component={Search} options={{ headerShown: false  }}  />
       <Stack.Screen name="HomeFollow" component={HomeFollow} options={{ headerShown: false  }}  />
       <Stack.Screen name="HomeForYou" component={HomeForYou} options={{ headerShown: false  }}  />
+      <Stack.Screen name="AddItem" component={AddItem} options={{ title: "Add Item" }} />
+      <Stack.Screen name="MindfulContent" component={MindfulContent} options={{ title: "MindfulContent" }} />
+      <Stack.Screen name="HomeFollowDetail" component={HomeFollowDetail} options={{ title: " " }} />
+      {/* <Stack.Screen name="Test" component={Test} options={{ title: " " }} /> */}
+
+
+      
     </Stack.Navigator>
   );
 }

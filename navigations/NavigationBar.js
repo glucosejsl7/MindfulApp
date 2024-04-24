@@ -7,17 +7,22 @@ import MindfulPlus from "../screens/MindfulPlus";
 import MindfulNotice from "../screens/MindfulNotice";
 import { View } from "react-native";
 import HomeMaterialTopTab from "./HomeMaterialTopTab";
+import Book from "../components/Book";
+import AddItem from "../components/AddItem";
+import Mindful from "../screens/Mindful";
+import Test from "../components/Test";
 
 const Tab = createBottomTabNavigator();
 
 export default function NavigationBar() {
+    const PlusComponent = React.useMemo(() => () => <AddItem id={null} />, []);
     return (
         <Tab.Navigator 
             screenOptions={{ 
                 tabBarActiveTintColor: '#ec407a', 
                 tabBarInactiveTintColor: 'black',
                 tabBarShowLabel: false, // This line hides the labels
-                tabBarStyle: { height: 65, borderRadius : 10, margin : 10 }
+                tabBarStyle: { height: 65, borderRadius : 10, margin : 10 },
             }}>
             <Tab.Screen 
                 name="Home"
@@ -37,7 +42,8 @@ export default function NavigationBar() {
             />
             <Tab.Screen
                 name="Plus"
-                component={MindfulPlus}
+                // component={PlusComponent}
+                component={Test}
                 options={({ focused }) => ({
                     tabBarIcon: ({ color, size }) => (
                         <View style={{ borderRadius : 10, backgroundColor:'#ec407a', paddingVertical: 5, paddingHorizontal : 10 }}>
@@ -50,6 +56,7 @@ export default function NavigationBar() {
             <Tab.Screen
                 name="Notice"
                 component={MindfulNotice}
+                // component={Book}
                 options={{
                     tabBarIcon: ({ color, size }) => ( <Octicons name="bell" color={color} size={size} /> ),
                     headerShown : false,

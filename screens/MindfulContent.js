@@ -1,8 +1,9 @@
 import React from "react";
 import { ScrollView, View } from "react-native";
-import Content from "../components/Content";
 import NavigationTop from "../components/NavigationTop";
 import Comment from "../components/Comment";
+import HomeFollowDetail from "../components/HomeFollowDetail";
+// import BookDetail from "../components/BookDetail";
 
 export default function MindfulContent() {
     return (
@@ -10,7 +11,8 @@ export default function MindfulContent() {
         <NavigationTop />
         <ScrollView>
             <View style={{ flex: 1, backgroundColor: '#FAFAFA', justifyContent: "center" }}>
-                <Content />
+                <HomeFollowDetail />
+                {/* <BookDetail /> */}
             </View>
         </ScrollView>
         <Comment />

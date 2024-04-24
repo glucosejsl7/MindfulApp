@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
 // import Mindful from './screens/Mindful';
-// import MindfulContent from './screens/MindfulContent';
+import MindfulContent from './screens/MindfulContent';
 // import MindfulSearch from './screens/MindfulSearch';
 // import MindfulProfileAccount from './screens/MindfulProfileAccount';
 
@@ -18,7 +18,6 @@ export default function App() {
       // <MindfulSearch />
       // <MindfulProfileAccount />
       <NavigationContainer>
-        {/* <NavigationBar /> */}
         <RootStack />
     </NavigationContainer>
   );
