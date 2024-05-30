@@ -7,16 +7,14 @@ import MindfulPlus from "../screens/MindfulPlus";
 import MindfulNotice from "../screens/MindfulNotice";
 import { View } from "react-native";
 import HomeMaterialTopTab from "./HomeMaterialTopTab";
-import Book from "../components/Book";
 import AddItem from "../components/AddItem";
 import Mindful from "../screens/Mindful";
-import Test from "../components/Test";
 
 const Tab = createBottomTabNavigator();
 
 export default function NavigationBar() {
-    // const PlusComponent = React.useMemo(() => () => <AddItem id={null} />, []);
-    const PlusComponent = React.useMemo(() => () => <Test id={null} />, []);
+    const PlusComponent = React.useMemo(() => () => <MindfulPlus id={null} />, []);
+    // const PlusComponent = React.useMemo(() => () => <Test id={null} />, []);
 
     return (
         <Tab.Navigator 

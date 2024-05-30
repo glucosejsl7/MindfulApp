@@ -88,7 +88,7 @@ export default function HomeFollow(props) {
     }
 
     return (
-        <View style={props.style}>
+        <View>
         <View style={{alignContent : 'flex-start',  paddingTop : 10,marginBottom : 60, backgroundColor :"white"}}>
             <View style={{ flexDirection : 'row', justifyContent : 'space-between', alignContent : 'flex-start'}}>
             <FlatList

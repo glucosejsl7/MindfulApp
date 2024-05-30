@@ -3,7 +3,6 @@ import { ScrollView, View } from "react-native";
 import NavigationTop from "../components/NavigationTop";
 import Comment from "../components/Comment";
 import HomeFollowDetail from "../components/HomeFollowDetail";
-// import BookDetail from "../components/BookDetail";
 
 export default function MindfulContent() {
     return (

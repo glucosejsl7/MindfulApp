@@ -1,7 +1,6 @@
 import React from "react";
 import { ScrollView, View } from "react-native";
 // import HomeFollow from "../components/HomeFollow";
-import Book from "../components/Book";
 import HomeMaterialTopTab from "../navigations/HomeMaterialTopTab";
 
 export default function Mindful() {

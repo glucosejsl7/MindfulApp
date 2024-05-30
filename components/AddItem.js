@@ -1,95 +1,123 @@
 import React, { useEffect, useState } from "react";
-import { KeyboardAvoidingView, ScrollView, Button,Text, TouchableOpacity, View, Image, FlatList, Dimensions, StyleSheet} from "react-native";
-import { Entypo, SimpleLineIcons, Feather,FontAwesome6, MaterialIcons, Ionicons } from '@expo/vector-icons';
+import { KeyboardAvoidingView, ScrollView, Button, Text, TouchableOpacity, View, Image, StyleSheet,FlatList } from "react-native";
+import { Entypo, SimpleLineIcons, Feather, FontAwesome6, MaterialIcons, Ionicons,AntDesign } from '@expo/vector-icons';
 import { TextInput } from "react-native-paper";
-import SwitchSelector from 'react-native-switch-selector';
 import { useNavigation, useRoute } from "@react-navigation/native";
 import BookStorage from "../storages/BookStorage";
+import * as ImagePicker from 'expo-image-picker';
 
 function AddItem() {
-    const navigation = useNavigation();
-    const route = useRoute();
     const [key, setKey] = useState("_" + Math.random().toString(36).substring(2, 9));
     const [title, setTitle] = useState("");
-    const [images, setImages] = useState([""]);
+    const [images, setImages] = useState([]);
     const [description, setDescription] = useState("");
     const [hashtag, setHashtag] = useState("");
-    const [showHashtagInput, setShowHashtagInput] = useState(false); // State to manage visibility of hashtag input
-    
-  
-  
+    const [showHashtagInput, setShowHashtagInput] = useState(false);
+    const navigation = useNavigation();
+    const route = useRoute();
+
     const onLoad = async () => {
         const { id } = route.params || { id: null };
-      if (id) {
-        let book = await BookStorage.readItemDetail(id);  
-          setKey(book.id);
-          setTitle(book.title);
-          setImages(book.images || [""]);
-          setDescription(book.description);
-          setHashtag(book.hashtag);
-      }
-      navigation.setOptions({ title: (id ? "edit" : "create") });    
+        if (id) {
+            let book = await BookStorage.readItemDetail(id);
+            setKey(book.id);
+            setTitle(book.title);
+            setImages(book.images || []);
+            setDescription(book.description);
+            setHashtag(book.hashtag);
+        }
+        navigation.setOptions({ title: (id ? "edit" : "create") });
     };
-      
-    useEffect(() => { onLoad();  }, []);
-  
-    const saveBook = async () => {
-      const currentDate = new Date();
-      const year = currentDate.getFullYear() + 543; // Convert to Buddhist calendar year
-      const month = ('0' + (currentDate.getMonth() + 1)).slice(-2); // Add leading zero if needed
-      const day = ('0' + currentDate.getDate()).slice(-2); // Add leading zero if needed
-    
-      const formattedDate = `${year}-${month}-${day}`;
-    
-      let new_data = { 
-        "id": key, 
-        "title": title, 
-        "images": images, 
-        "description": description, 
-        "hashtag": hashtag,
-        "datetime": formattedDate // Formatted date
-      };
-    
-      await BookStorage.writeItem(new_data);
 
-        navigation.navigate("Home");
+    useEffect(() => { onLoad(); }, []);
+
+    const saveBook = async () => {
+        const currentDate = new Date();
+        const year = currentDate.getFullYear() + 543;
+        const month = ('0' + (currentDate.getMonth() + 1)).slice(-2);
+        const day = ('0' + currentDate.getDate()).slice(-2);
+
+        const formattedDate = `${year}-${month}-${day}`;
+
+        let new_data = {
+            "id": key,
+            "title": title,
+            "images": images,
+            "description": description,
+            "hashtag": hashtag,
+            "datetime": formattedDate
         };
-    
-    
-  
-    const addImage = () => {
-      setImages([...images, ""]);
+
+        await BookStorage.writeItem(new_data);
+        resetForm();
+        navigation.navigate("Home");
     };
-  
+
+    const resetForm = () => {
+        setKey("_" + Math.random().toString(36).substring(2, 9));
+        setTitle("");
+        setImages([]);
+        setDescription("");
+        setHashtag("");
+        setShowHashtagInput(false);
+    };
+
+    const pickImage = async () => {
+        try {
+            let result = await ImagePicker.launchImageLibraryAsync({
+                mediaTypes: ImagePicker.MediaTypeOptions.Images,
+                allowsEditing: true,
+                aspect: [4, 3],
+                quality: 1,
+            });
+
+            if (!result.canceled) {
+                setImages([...images, result.assets[0].uri]);
+            }
+        } catch (error) {
+            console.error('Error picking Image:', error);
+        }
+    };
+
+    const handleToggle = () => {
+        setIsOn(!isOn);
+    };
 
     const [isOn, setIsOn] = useState(false);
 
-    const handleToggle = () => {
-      setIsOn(!isOn);
-    };
-
     return (
-        <KeyboardAvoidingView style={{flexDirection : 'column', flex : 1 , backgroundColor : 'white',paddingTop : 30}}> 
-            <View style={{flexDirection : 'column',padding : 10,margin : 10, borderWidth : 0.5, borderRadius : 10,backgroundColor : 'white'}}>
-                <ScrollView  style={styles.termsAndConditionsStyle}>
-                    <View style={{flexDirection : 'row' ,justifyContent :'space-between'}}>
-                        <Text style={{marginBottom : 10}}>เพิ่มรูปภาพ</Text>
-                        <TouchableOpacity onPress={addImage}>
-                            <Ionicons name="add-circle-outline" size={20} color="black" />
-                        </TouchableOpacity>
-                    </View>
-                    {images.map((image, index) => (
-                        <TextInput key={index} placeholder={`แตะเพื่อวาง URI ${index + 1}...`} value={image} onChangeText={(text) => {
-                            const updatedImages = [...images];
-                            updatedImages[index] = text;
-                            setImages(updatedImages);
-                        }} style={{ backgroundColor : 'white',fontSize: 14 ,borderWidth: 0, borderColor: 'transparent', height : 30 }} placeholderTextColor={'#e0e0e0'} placeholderBorderColor= {false} />
-                    ))}
-                </ScrollView>
-            </View>
+        <ScrollView>
+            <KeyboardAvoidingView style={{ flexDirection: 'column', flex: 1, backgroundColor: 'white', paddingTop: 30 }}>
+                <View style={{ flexDirection: 'column', paddingHorizontal: 10,paddingTop:20, margin: 10, borderRadius: 10, backgroundColor: 'white' }}>
+                <View style={{justifyContent : 'center',alignItems : 'center', paddingBottom :20}}>
+                    <Text style={{fontSize : 16, fontWeight : 'bold'}}>โพสต์</Text> 
+                </View>
+                    <FlatList
+                        data={[...images, 'add_button']} // Add a placeholder for the add button
+                        horizontal={true}
+                        showsHorizontalScrollIndicator={false} 
+                        keyExtractor={(item, index) => index.toString()}
+                        renderItem={({ item, index }) => {
+                            if (item === 'add_button') {
+                                return (
+                                    <View >
+                                        <TouchableOpacity onPress={pickImage} style={{width: 100, height: 100,borderColor :"#e0e0e0",borderWidth : 0.5, borderRadius: 7,marginRight: 10,justifyContent: 'center',alignItems: 'center',backgroundColor: 'rgba(255, 255, 255, 0.7)'}}>
+                                            <AntDesign name="plus" size={30} color="#bdbdbd" />
+                                        </TouchableOpacity>
+                                    </View>
+                                );
+                            } else {
+                                return (
+                                    <Image source={{ uri: item }} style={{ width: 100, height: 100, marginRight: 10, borderRadius : 7 }} />
+                                );
+                            }
+                        }}
+            
+                    />
+                </View>
 
-            <View style={{flexDirection : 'column', justifyContent : 'space-between'}}>
-                <TextInput placeholder="เพิ่มหัวเรื่องที่น่าสนใจเพื่อเพิ่มยอดการดู" value={title} onChangeText={(text) => setTitle(text)} multiline numberOfLines={1} style={{ backgroundColor : 'white'}} placeholderTextColor={'#e0e0e0'} placeholderBorderColor= {false}/>
+                <View style={{flexDirection : 'column', justifyContent : 'space-between'}}>
+                <TextInput placeholder="เพิ่มหัวเรื่องที่น่าสนใจเพื่อเพิ่มยอดการดู" value={title} onChangeText={(text) => setTitle(text)} multiline numberOfLines={1} style={{ backgroundColor : 'white',fontWeight : 'bold'}} placeholderTextColor={'#e0e0e0'} placeholderBorderColor= {false}/>
                 <View style={{flexDirection : 'column',borderBottomWidth : 0.5, borderColor : '#eeeeee', justifyContent : 'space-between' , paddingBottom : 10}}> 
                         <View style={{flexDirection : 'column', marginBottom : 80}}>
                             <TextInput placeholder="แตะเพื่อเพิ่มแคปชั่น..." value={description} onChangeText={(text) => setDescription(text)} multiline numberOfLines={1} style={{ backgroundColor : 'white',fontSize: 15 ,borderWidth: 0, borderColor: 'transparent' }} placeholderTextColor={'#e0e0e0'} placeholderBorderColor= {false} />
@@ -167,7 +195,7 @@ function AddItem() {
                     <Text style={{fontSize: 16}}>บันทึกแบบร่าง</Text>
 
                 </View>
-                <TouchableOpacity onPress={saveBook} style={{backgroundColor : '#ec407a', paddingHorizontal : 129, paddingVertical : 10 ,borderRadius : 3}}>
+                <TouchableOpacity onPress={saveBook} style={{backgroundColor : '#ec407a', paddingHorizontal : 100, paddingVertical : 10 ,borderRadius : 3}}>
 
                 
                 <Text style={{fontSize: 16}}>โพสต์</Text>
@@ -176,6 +204,7 @@ function AddItem() {
 
             </View>
         </KeyboardAvoidingView>
+        </ScrollView>
 
     );
 }

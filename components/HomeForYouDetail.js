@@ -69,7 +69,7 @@ export default function HomeForYouDetail(props) {
 
     return (
         <View style={{alignContent: 'flex-start'}}>
-            <View style={props.style}>
+            <View >
             <SliderBox images={images} style={{ width: 450, height: 550 }} dotColor="black" inactiveDotColor="grey" dotStyle={{ width: 10, height: 10, borderRadius: 10, marginHorizontal: 0 }} />
                 <View style={{ flexDirection: 'row', marginHorizontal: 15, marginTop: 20, justifyContent: 'space-between' }}>
                     <View style={{ flexDirection: 'row', marginLeft: 5, marginTop: 5 }}>

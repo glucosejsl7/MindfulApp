@@ -64,7 +64,7 @@ function Search(props) {
 
     return (
         <View style={{ flex: 1 }}>
-            <View style={props.style}>
+            <View >
                 <SliderBox images={images} style={{ width: 450, height: 230 }} dotColor="white" inactiveDotColor="grey" dotStyle={{ width: 7, height: 7, borderRadius: 7, marginHorizontal: -10}}/>
             </View>
 
