@@ -11,8 +11,8 @@ export default function HomeMaterialTopTab() {
     const Tab = createMaterialTopTabNavigator();
 
     const renderTabBar = ({ navigation, state }) => (
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',paddingTop : 40, borderBottomWidth : 0.5 ,paddingBottom : -10 ,borderColor : 'grey',backgroundColor : 'white' }}>
-            <Image style={{ width: 90, height: 35, marginLeft: 20 }} source={require("../Picture/logo2.png")} />
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',paddingTop : 60, borderBottomWidth : 0.5 ,paddingBottom : -10 ,borderColor : '#eeeeee',backgroundColor : 'white' }}>
+            <Image style={{ width: 45, height: 35, marginLeft: 20 }} source={require("../Picture/logo-01.png")} />
             <TouchableOpacity onPress={() => navigation.navigate(state.routes[0].name)} style={{ marginLeft: 8, marginTop : 10}}>
                 <View style={{ borderBottomWidth: state.index === 0 ? 2 : 0, borderBottomColor: state.index === 0 ? 'black' : 'transparent' , paddingBottom : 10}}>
                     <Text style={{ color: state.index === 0 ? 'black' : 'grey', fontSize: 18 }}>

@@ -15,14 +15,16 @@ import Test from "../components/Test";
 const Tab = createBottomTabNavigator();
 
 export default function NavigationBar() {
-    const PlusComponent = React.useMemo(() => () => <AddItem id={null} />, []);
+    // const PlusComponent = React.useMemo(() => () => <AddItem id={null} />, []);
+    const PlusComponent = React.useMemo(() => () => <Test id={null} />, []);
+
     return (
         <Tab.Navigator 
             screenOptions={{ 
                 tabBarActiveTintColor: '#ec407a', 
                 tabBarInactiveTintColor: 'black',
                 tabBarShowLabel: false, // This line hides the labels
-                tabBarStyle: { height: 65, borderRadius : 10, margin : 10 },
+                tabBarStyle: { height: 85, borderRadius : 0 },
             }}>
             <Tab.Screen 
                 name="Home"
@@ -42,8 +44,8 @@ export default function NavigationBar() {
             />
             <Tab.Screen
                 name="Plus"
-                // component={PlusComponent}
-                component={Test}
+                component={PlusComponent}
+                // component={Test}
                 options={({ focused }) => ({
                     tabBarIcon: ({ color, size }) => (
                         <View style={{ borderRadius : 10, backgroundColor:'#ec407a', paddingVertical: 5, paddingHorizontal : 10 }}>

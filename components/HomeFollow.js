@@ -125,14 +125,13 @@ export default function HomeFollow(props) {
                 onRefresh={() => { loadBooks(); }}
                 numColumns={2}
                 keyExtractor={item => item.id.toString()} 
-                renderItem={
-                    ({ item, index }) => {
-                        console.log(item, index, item.images);
-                        const uriToShow = Array.isArray(item.images) ? item.images[0] : item.images; 
-                        return (
-                            <TouchableOpacity onPress={() => { navigation.navigate("HomeFollowDetail", { "id": item.id }); }} style={{  marginHorizontal: 7,marginVertical :2, flex: 1}} >
+                renderItem={({ item, index }) => {
+                    console.log(item, index, item.images);
+                    const uriToShow = Array.isArray(item.images) ? item.images[0] : item.images; 
+                    return (
+                        <TouchableOpacity key={item.id} onPress={() => { navigation.navigate("HomeFollowDetail", { "id": item.id }); }} style={{  marginHorizontal: 7,marginVertical :2, flex: 1}} >
                             <View style={{backgroundColor:"white", height:310,width: screenWidth / 2 - 15,borderRadius:15 , marginTop : 10, shadowColor: '#000',shadowOffset: { width: 0, height: 2 },shadowOpacity: 0.5, shadowRadius: 2, elevation: 7 }}>
-                                <Image source={{ uri: uriToShow }} style={{ width: Dimensions.get("screen").width / 2.0 - 25, height : '70%' , margin: 5 ,borderTopLeftRadius : 10, borderTopRightRadius : 10}}  />
+                            {uriToShow && <Image source={{ uri: uriToShow }} style={{ width: Dimensions.get("screen").width / 2.0 - 25, height : '70%' , margin: 5 ,borderTopLeftRadius : 10, borderTopRightRadius : 10}}  />}
                                 <View style={{flexDirection : 'column', width: Dimensions.get("screen").width / 2.0 - 35, marginTop : 5, marginHorizontal : 10,justifyContent : 'space-between' ,height : 70}}>
                                     <Text style={{ fontSize : 16}}>{item.title}</Text> 
                                     <View style={{ flexDirection : 'row' ,justifyContent : 'space-between',}}>
@@ -148,13 +147,10 @@ export default function HomeFollow(props) {
                                 </View>
                             </View>
                         </TouchableOpacity>
-                            
-
-                        );
-                    }
-                }
-
+                    );
+                }}
             />
+
         </View>
         </View>
     );

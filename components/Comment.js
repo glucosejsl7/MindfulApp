@@ -81,7 +81,7 @@ export default function Comment(){
         <View style={{flexDirection : 'column', justifyContent : 'space-between' , borderTopWidth : 0.5, borderColor : '#bdbdbd' ,paddingTop : 15, paddingBottom : 40, paddingHorizontal : 20}}>
             {showCommentInput && (
                 <View style={{ marginBottom : 10 }}>
-                    <TextInput placeholder="แสดงความคิดเห็นตอนนี้..." multiline numberOfLines={1} style={{ backgroundColor : '#e0e0e0', paddingHorizontal: 10, paddingVertical: 8,borderRadius : 5 }}/>
+                    <TextInput placeholder="แสดงความคิดเห็นตอนนี้..." multiline numberOfLines={1} style={{ backgroundColor : '#e0e0e0', paddingHorizontal: 10, paddingVertical: 8,borderRadius : 5 ,height : 40,paddingTop : 12}}/>
                 </View>
             )}
             <View style={{flexDirection : 'row', justifyContent : 'space-between' }}>

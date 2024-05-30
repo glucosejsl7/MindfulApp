@@ -13,13 +13,15 @@ function NavigationTop(){
     };
 
     return (
-        <View style={{flexDirection : 'row', justifyContent : 'space-between' ,alignItems : 'center', borderBottomWidth : 0.5, borderColor : '#bdbdbd' ,height : 100,paddingTop : 40, paddingLeft : 10, paddingRight : 15}}>
+        <View>
+        <View style={{flexDirection : 'row', justifyContent : 'space-between' ,alignItems : 'center', borderBottomWidth : 0.5, borderColor : '#bdbdbd' ,height : 100,paddingTop : 40, marginTop : 20}}>
             <View style={{flexDirection: 'row', width : 425,justifyContent : 'flex-end',alignItems : 'center'}}>
                 <TextInput placeholder="ค้นหา" style={{ flex: 1, borderRadius: 5, paddingHorizontal: 5, paddingVertical: 2, backgroundColor : '#e0e0e0', height : 40, marginRight : 15, marginLeft : 10 }} />
-                <TouchableOpacity style={{marginHorizontal : 8}}>
+                <TouchableOpacity style={{marginHorizontal : 8, marginRight : 50}}>
                     <Text style={{fontSize : 16, fontWeight : 'bold'}}>ค้นหา</Text>
                 </TouchableOpacity>
             </View>
+        </View>
         </View>
     );
 }

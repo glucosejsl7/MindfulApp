@@ -122,7 +122,7 @@ export default function HomeForYou(props) {
                         return (
                             <TouchableOpacity onPress={() => handleOnlineMindfulPress(item)}>
                             <View style={{backgroundColor:"white", height:310,width: screenWidth / 2 - 15,borderRadius:15 , marginTop : 10, shadowColor: '#000',shadowOffset: { width: 0, height: 2 },shadowOpacity: 0.5, shadowRadius: 2, elevation: 7 }}>
-                                <Image source={{ uri: uriToShow }} style={{ width: Dimensions.get("screen").width / 2.0 - 25, height : '70%' , margin: 5 ,borderTopLeftRadius : 10, borderTopRightRadius : 10}}  />
+                                {uriToShow && <Image source={{ uri: uriToShow }} style={{ width: Dimensions.get("screen").width / 2.0 - 25, height : '70%' , margin: 5 ,borderTopLeftRadius : 10, borderTopRightRadius : 10}}  />}
                                 <View style={{flexDirection : 'column', width: Dimensions.get("screen").width / 2.0 - 35, marginTop : 5, marginHorizontal : 10,justifyContent : 'space-between' ,height : 70}}>
                                     <Text style={{ fontSize : 16}}>{item.title}</Text> 
                                     <View style={{ flexDirection : 'row' ,justifyContent : 'space-between',}}>

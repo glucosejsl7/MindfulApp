@@ -57,7 +57,7 @@ function ProfileAccount(props) {
     };
 
     return (
-        <View style={{ flex: 1, flexDirection: "column", marginTop: 50, backgroundColor: 'white' }}>
+        <View style={{ flex: 1, flexDirection: "column", marginTop: 70, backgroundColor: 'white' }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: 15 }}>
                 <Text style={{ fontSize: 18 }}>@{onlineContent.username}</Text>
                 <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>

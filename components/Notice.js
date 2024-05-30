@@ -37,8 +37,8 @@ function Notice() {
 
     return (
         <View style={{flexDirection : 'column', paddingTop : 50}}>
-            <View style={{justifyContent : 'center',alignItems : 'center', paddingBottom : 10}}>
-                <Text style={{fontSize : 16}}>การแจ้งเตือน</Text> 
+            <View style={{justifyContent : 'center',alignItems : 'center', paddingBottom : 10, paddingTop : 20}}>
+                <Text style={{fontSize : 16, fontWeight : 'bold'}}>การแจ้งเตือน</Text> 
             </View>
             <ScrollView>
             <View style={{flexDirection : 'column' ,borderBottomWidth : 0.5, borderColor : '#e0e0e0'}}>
@@ -87,7 +87,7 @@ function Notice() {
                                     <Image style={{ height: 50, width: 50, borderRadius: 50 / 2 }} source={{ uri: item.profile }} />
                                     <View style={{ flexDirection: 'column', marginLeft: 15 }}>
                                         <Text style={{ fontSize: 16 }}>{item.name}</Text>
-                                        <Text style={{ fontSize: 11, color: '#757575', maxWidth: 250 }} numberOfLines={1} ellipsizeMode="tail">{item.personal_background}</Text>
+                                        <Text style={{ fontSize: 11, color: '#757575', maxWidth: 190 }} numberOfLines={1} ellipsizeMode="tail">{item.personal_background}</Text>
                                         <Text style={{ fontSize: 12, color: '#757575' }}>ถูกใจ {item.total_heart} ครั้ง</Text>
                                     </View>
                                 </View>
